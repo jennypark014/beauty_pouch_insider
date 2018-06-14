@@ -22,10 +22,11 @@ class BrandsController < ApplicationController
   def create
     @brand = Brand.new
 
-    @brand.product_id = params[:product_id]
     @brand.name = params[:name]
     @brand.ceo = params[:ceo]
     @brand.description = params[:description]
+    @brand.headline_products = params[:headline_products]
+    @brand.beauty_rankings = params[:beauty_rankings]
 
     save_status = @brand.save
 
@@ -52,10 +53,11 @@ class BrandsController < ApplicationController
   def update
     @brand = Brand.find(params[:id])
 
-    @brand.product_id = params[:product_id]
     @brand.name = params[:name]
     @brand.ceo = params[:ceo]
     @brand.description = params[:description]
+    @brand.headline_products = params[:headline_products]
+    @brand.beauty_rankings = params[:beauty_rankings]
 
     save_status = @brand.save
 

@@ -18,15 +18,6 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for product_id -->
-      <div class="form-group">
-        <label for="product_id" class="control-label">
-          Product
-        </label>
-
-        <input type="text" id="product_id" name="product_id" placeholder="Product" class="form-control" value="<%= @brand.product_id %>">
-      </div>
-
       <!-- Label and input for name -->
       <div class="form-group">
         <label for="name" class="control-label">
@@ -52,6 +43,24 @@
         </label>
 
         <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @brand.description %></textarea>
+      </div>
+
+      <!-- Label and input for headline_products -->
+      <div class="form-group">
+        <label for="headline_products" class="control-label">
+          Headline products
+        </label>
+
+        <input type="text" id="headline_products" name="headline_products" placeholder="Headline products" class="form-control" value="<%= @brand.headline_products %>">
+      </div>
+
+      <!-- Label and input for beauty_rankings -->
+      <div class="form-group">
+        <label for="beauty_rankings" class="control-label">
+          Beauty rankings
+        </label>
+
+        <input type="text" id="beauty_rankings" name="beauty_rankings" placeholder="Beauty rankings" class="form-control" value="<%= @brand.beauty_rankings %>">
       </div>
 
       <button class="btn btn-warning">

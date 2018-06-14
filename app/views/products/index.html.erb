@@ -14,8 +14,8 @@
   </div>
 
 <div class="form-group">
-    <%= f.label :likes_cont, "Likes contains" %>
-    <%= f.text_field :likes_cont, :class => "form-control", :placeholder => "Likes contains" %>
+    <%= f.label :comments_cont, "Comments contains" %>
+    <%= f.text_field :comments_cont, :class => "form-control", :placeholder => "Comments contains" %>
   </div>
 
 <div class="form-group">
@@ -29,44 +29,9 @@
   </div>
 
 <div class="form-group">
-          <%= f.label :expriration, "Expriration" %>
-          <div class="row">
-            <div class='col-md-6 mb-1'>
-              <div class='input-group date' id='exprirationgteqPicker'>
-                  <%= f.text_field :expriration_gteq, :class => "form-control", :placeholder => "Expriration greater than or equal to" %>
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-            </div>
-
-            <div class='col-md-6'>
-              <div class='input-group date' id='exprirationlteqPicker'>
-                  <%= f.text_field :expriration_lteq, :class => "form-control", :placeholder => "Expriration less than or equal to" %>
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-            </div>
-          </div>
-      </div>
-      <script type="text/javascript">
-          $(function () {
-              $('#exprirationgteqPicker').datetimepicker({
-                  format: 'YYYY-MM-DD hh:mm:SS'
-              });
-              $('#exprirationlteqPicker').datetimepicker({
-                  useCurrent: false,
-                  format: 'YYYY-MM-DD hh:mm:SS'
-              });
-              $('#exprirationgteqPicker').on("dp.change", function (e) {
-                  $('#exprirationlteqPicker').data("DateTimePicker").minDate(e.date);
-              });
-              $('#exprirationlteqPicker').on("dp.change", function (e) {
-                  $('#exprirationgteqPicker').data("DateTimePicker").maxDate(e.date);
-              });
-          });
-      </script>
+    <%= f.label :image_url_cont, "Image url contains" %>
+    <%= f.text_field :image_url_cont, :class => "form-control", :placeholder => "Image url contains" %>
+  </div>
 
 <div class="form-group">
     <%= f.label :description_cont, "Description contains" %>
@@ -114,16 +79,44 @@
       </script>
 
         <div class="form-group">
-  <%= f.label :product_id, "Brand Product" %>
-  <div class="row">
-    <div class='col-md-6 mb-1'>
-      <%= f.text_field :brand_product_id_gteq, :class => "form-control", :placeholder => "Brand Product greater than or equal to" %>
-    </div>
-    <div class='col-md-6'>
-      <%= f.text_field :brand_product_id_lteq, :class => "form-control", :placeholder => "Brand Product less than or equal to" %>
-    </div>
-  </div>
-</div>
+          <%= f.label :created_at, "Brand Created at" %>
+          <div class="row">
+            <div class='col-md-6 mb-1'>
+              <div class='input-group date' id='brandgteqcreated_atPicker'>
+                  <%= f.text_field :brand_created_at_gteq, :class => "form-control", :placeholder => "Brand Created at greater than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+
+            <div class='col-md-6'>
+              <div class='input-group date' id='brandlteqcreated_atPicker'>
+                  <%= f.text_field :brand_created_at_lteq, :class => "form-control", :placeholder => "Brand Created at less than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+          </div>
+      </div>
+      <script type="text/javascript">
+          $(function () {
+              $('#brandgteqcreated_atPicker').datetimepicker({
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#brandlteqcreated_atPicker').datetimepicker({
+                  useCurrent: false,
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#brandgteqcreated_atPicker').on("dp.change", function (e) {
+                  $('#brandlteqcreated_atPicker').data("DateTimePicker").minDate(e.date);
+              });
+              $('#brandlteqcreated_atPicker').on("dp.change", function (e) {
+                  $('#brandgteqcreated_atPicker').data("DateTimePicker").maxDate(e.date);
+              });
+          });
+      </script>
 
       <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
 
@@ -141,12 +134,11 @@
       <tr>
         <th>Name</th>
         <th>Description</th>
-        <th>Expriration</th>
-        <th>Image</th>
+        <th>Image url</th>
         <th>Brand</th>
         <th>Benefits</th>
         <th>Price</th>
-        <th>Likes</th>
+        <th>Comments</th>
         <th>Actions</th>
       </tr>
 
@@ -154,18 +146,17 @@
       <tr>
         <td><%= product.name %></td>
         <td><%= product.description %></td>
-        <td><%= product.expriration %></td>
-        <td><img src='<%= product.image %>' class='img-responsive'></td>
+        <td><%= product.image_url %></td>
         <td>
           <% if product.brand.present? %>
             <a href="/brands/<%= product.brand.id %>">
-              <%= product.brand.product_id %>
+              <%= product.brand.created_at %>
             </a>
           <% end %>
         </td>
         <td><%= product.benefits %></td>
         <td><%= product.price %></td>
-        <td><%= product.likes %></td>
+        <td><%= product.comments %></td>
         <td>
           <a href="/products/<%= product.id %>" class="btn btn-primary">Show</a>
           <a href="/products/<%= product.id %>/edit" class="btn btn-warning">Edit</a>
