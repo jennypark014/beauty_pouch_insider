@@ -11,17 +11,14 @@
       <dt>Description</dt>
       <dd><%= @product.description %></dd>
 
-      <dt>Expriration</dt>
-      <dd><%= @product.expriration %></dd>
-
-      <dt>Image</dt>
-      <dd><img src="<%= @product.image %>" class="img-responsive"></dd>
+      <dt>Image url</dt>
+      <dd><%= @product.image_url %></dd>
 
       <dt>Brand</dt>
       <dd>
         <% if @product.brand.present? %>
           <a href="/brands/<%= @product.brand_id %>">
-            <%= @product.brand.product_id %>
+            <%= @product.brand.created_at %>
           </a>
         <% end %>
       </dd>
@@ -32,8 +29,8 @@
       <dt>Price</dt>
       <dd><%= @product.price %></dd>
 
-      <dt>Likes</dt>
-      <dd><%= @product.likes %></dd>
+      <dt>Comments</dt>
+      <dd><%= @product.comments %></dd>
 
     </dl>
 
