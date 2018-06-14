@@ -26,7 +26,13 @@
         <td><%= product.description %></td>
         <td><%= product.expriration %></td>
         <td><img src='<%= product.image %>' class='img-responsive'></td>
-        <td><%= product.brand.product_id %></td>
+        <td>
+          <% if product.brand.present? %>
+            <a href="/brands/<%= product.brand.id %>">
+              <%= product.brand.product_id %>
+            </a>
+          <% end %>
+        </td>
         <td><%= product.benefits %></td>
         <td><%= product.price %></td>
         <td><%= product.likes %></td>

@@ -18,7 +18,13 @@
       <dd><img src="<%= @product.image %>" class="img-responsive"></dd>
 
       <dt>Brand</dt>
-      <dd><%= @product.brand_id %></dd>
+      <dd>
+        <% if @product.brand.present? %>
+          <a href="/brands/<%= @product.brand_id %>">
+            <%= @product.brand.product_id %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Benefits</dt>
       <dd><%= @product.benefits %></dd>
