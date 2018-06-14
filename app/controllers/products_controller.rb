@@ -23,12 +23,11 @@ class ProductsController < ApplicationController
 
     @product.name = params[:name]
     @product.description = params[:description]
-    @product.expriration = params[:expriration]
-    @product.image = params[:image]
+    @product.image_url = params[:image_url]
     @product.brand_id = params[:brand_id]
     @product.benefits = params[:benefits]
     @product.price = params[:price]
-    @product.likes = params[:likes]
+    @product.comments = params[:comments]
 
     save_status = @product.save
 
@@ -57,12 +56,11 @@ class ProductsController < ApplicationController
 
     @product.name = params[:name]
     @product.description = params[:description]
-    @product.expriration = params[:expriration]
-    @product.image = params[:image]
+    @product.image_url = params[:image_url]
     @product.brand_id = params[:brand_id]
     @product.benefits = params[:benefits]
     @product.price = params[:price]
-    @product.likes = params[:likes]
+    @product.comments = params[:comments]
 
     save_status = @product.save
 

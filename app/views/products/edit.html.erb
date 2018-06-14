@@ -14,7 +14,7 @@
 
 <div class="row">
   <div class="col-md-12">
-    <form action="/update_product/<%= @product.id %>" method="post" enctype="multipart/form-data">
+    <form action="/update_product/<%= @product.id %>" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
@@ -36,23 +36,13 @@
         <input type="text" id="description" name="description" placeholder="Description" class="form-control" value="<%= @product.description %>">
       </div>
 
-      <!-- Label and input for expriration -->
+      <!-- Label and input for image_url -->
       <div class="form-group">
-        <label for="expriration" class="control-label">
-          Expriration
+        <label for="image_url" class="control-label">
+          Image url
         </label>
 
-        <input type="text" id="expriration" name="expriration" placeholder="Expriration" class="form-control" value="<%= @product.expriration %>">
-      </div>
-
-      <!-- Label and input for image -->
-      <div class="form-group">
-        <label for="image" class="control-label">
-          Image
-        </label>
-
-        <%= cl_image_tag(@product.image.to_s, :width => 90, :height => 90, :crop => :thumb) %>
-        <input type="file" id="image" name="image" class="form-control">
+        <input type="text" id="image_url" name="image_url" placeholder="Image url" class="form-control" value="<%= @product.image_url %>">
       </div>
 
       <!-- Label and input for brand_id -->
@@ -61,7 +51,7 @@
           Brand
         </label>
 
-        <%= select_tag(:brand_id, options_from_collection_for_select(Brand.all, :id, :product_id, @product.brand_id), :class => "form-control") %>
+        <%= select_tag(:brand_id, options_from_collection_for_select(Brand.all, :id, :created_at, @product.brand_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for benefits -->
@@ -82,13 +72,13 @@
         <input type="text" id="price" name="price" placeholder="Price" class="form-control" value="<%= @product.price %>">
       </div>
 
-      <!-- Label and input for likes -->
+      <!-- Label and input for comments -->
       <div class="form-group">
-        <label for="likes" class="control-label">
-          Likes
+        <label for="comments" class="control-label">
+          Comments
         </label>
 
-        <input type="text" id="likes" name="likes" placeholder="Likes" class="form-control" value="<%= @product.likes %>">
+        <input type="text" id="comments" name="comments" placeholder="Comments" class="form-control" value="<%= @product.comments %>">
       </div>
 
       <button class="btn btn-warning">
